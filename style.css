@@ -1,0 +1,166 @@
+:root {
+    --color-primary: #00539C;
+    --color-secondary: #FFD662;
+    --color-black: #333;
+}
+
+/* reset */
+h1,
+h2 {
+    margin: 8px;
+}
+
+input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: none;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrap {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrap.inactive::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+}
+
+.header {
+    display: flex;
+    gap: 20px;
+}
+
+.header li {
+    margin: 6px 0;
+}
+
+.saveBtn {
+    width: 200px;
+    height: 40px;
+
+    position: absolute;
+    bottom: 10px;
+}
+
+/* contents */
+.contents {
+    max-width: 100rem;
+    max-height: 100rem;
+    border: 2px solid tomato;
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* table */
+.section {
+    width: 100%;
+    height: 100%;
+    border: 1px solid blue;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 4px;
+
+    pointer-events: none;
+    background: #ddd;
+}
+
+.section.active {
+    pointer-events: auto;
+    background: #fff;
+}
+
+.section input {
+    width: 62px;
+    height: 62px;
+    border: 1px solid #000;
+    text-align: center;
+    padding: 4px;
+}
+
+.section .target {
+    background: #FFD662;
+    pointer-events: none;
+
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.mainTarget input {
+    pointer-events: none;
+    background: #ddd;
+}
+
+.mainTarget input.active {
+    pointer-events: auto;
+    background: #fff;
+}
+
+/* 팝업 */
+.example {
+    display: none;
+
+    max-width: 100rem;
+    max-height: 100rem;
+
+    position: absolute;
+    background: #ddd;
+}
+
+.example img {
+    width: 600px;
+    height: 600px;
+}
+
+.example.on {
+    display: block;
+}
+
+.closeBtn {
+    width: 50px;
+    height: 50px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.closeBtn::after {
+    content: 'X';
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+}

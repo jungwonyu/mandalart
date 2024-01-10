@@ -79,7 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const saveBtn = document.querySelector('.saveBtn');
   const contents = document.querySelector('.contents');
 
-  saveBtn.addEventListener('click', () => {});
+  saveBtn.addEventListener('click', () => {
+    html2canvas(contents).then(canvas => {
+      saveImg(canvas.toDataURL('image/jpg'), 'image.jpg');
+    });
+  });
 
   /* function */
   function showExample(bool = true) {
@@ -90,5 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
       example.classList.remove(CLA_ON);
       wrap.classList.remove(CLA_INACTIVE);
     }
+  }
+
+  function saveImg(uri, filename) {
+    let link = document.createElement('a');
+    document.body.appendChild(link);
+    link.href = uri;
+    link.download = filename;
+    link.click();
+    document.body.removeChild(link);
   }
 });

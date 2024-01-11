@@ -1,6 +1,7 @@
 :root {
     --color-primary: #00539C;
     --color-secondary: #FFD662;
+    --color-tertiary: #00539c44;
     --color-black: #333;
 }
 
@@ -20,7 +21,11 @@ input {
 
 button {
     border: none;
-    background: none;
+    padding: 4px;
+    border-radius: 10px;
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    font-weight: bold;
     cursor: pointer;
 }
 
@@ -29,6 +34,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: var(--color-primary);
+    color: var(--color-secondary);
 }
 
 .wrap {
@@ -72,8 +79,9 @@ body {
 .contents {
     max-width: 100rem;
     max-height: 100rem;
-    border: 2px solid tomato;
-    
+    background: var(--color-secondary);
+    border-radius: 10px;
+
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -86,7 +94,6 @@ body {
 .section {
     width: 100%;
     height: 100%;
-    border: 1px solid blue;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -94,12 +101,12 @@ body {
     gap: 4px;
 
     pointer-events: none;
-    background: #ddd;
+    background: var(--color-tertiary);
 }
 
 .section.active {
     pointer-events: auto;
-    background: #fff;
+    background: var(--color-secondary);
 }
 
 .section input {
@@ -111,17 +118,17 @@ body {
 }
 
 .section .target {
-    background: #FFD662;
+    background: var(--color-primary);
     pointer-events: none;
 
-    color: var(--color-primary);
+    color: var(--color-secondary);
     font-weight: bold;
     font-size: 18px;
 }
 
 .mainTarget input {
     pointer-events: none;
-    background: #ddd;
+    background: var(--color-tertiary);
 }
 
 .mainTarget input.active {
@@ -129,15 +136,25 @@ body {
     background: #fff;
 }
 
+.mainTarget .main {
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 18px;
+}
+
 /* 팝업 */
 .example {
     display: none;
 
-    max-width: 100rem;
-    max-height: 100rem;
-
     position: absolute;
-    background: #ddd;
+    background: var(--color-secondary);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.example h2 {
+    text-align: center;
+    color: var(--color-primary);
 }
 
 .example img {
@@ -150,8 +167,8 @@ body {
 }
 
 .closeBtn {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
 
     position: absolute;
     top: 0;
@@ -160,7 +177,7 @@ body {
 
 .closeBtn::after {
     content: 'X';
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
-    color: #fff;
+    color: var(--color-primary);
 }

@@ -28,10 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /////////////////////////////////////////////////////////////////////////
   const finalTarget = document.querySelector('.mainTarget .main');
   const mainInputs = document.querySelectorAll('.mainTarget input');
-
   const sections = document.querySelectorAll('.section');
-  const sectionInputs = document.querySelectorAll('.section input');
-  const sectionTitles = document.querySelectorAll('.section .target');
 
   const isInputed = () => {
     let bool = false;
@@ -52,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
           mainInput.classList.remove(CLA_ACTIVE)
         );
         finalTarget.classList.add(CLA_ACTIVE);
-        inputs.forEach((input) => input.value = '');
+        inputs.forEach((input) => (input.value = ''));
         sections.forEach((section) => section.classList.remove(CLA_ACTIVE));
       }
     });
@@ -69,7 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
         sections[mainInputIdx].children[4].value = mainInput.value;
       } else {
         sections[mainInputIdx].classList.remove(CLA_ACTIVE);
-        for (let i = 0; i < 9; i++) sections[mainInputIdx].children[i].value = ''; 
+        for (let i = 0; i < 9; i++)
+          sections[mainInputIdx].children[i].value = '';
       }
     });
   });
@@ -80,11 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const contents = document.querySelector('.contents');
 
   saveBtn.addEventListener('click', () => {
-    html2canvas(contents).then(canvas => {
-      saveImg(canvas.toDataURL('image/jpg'), 'image.jpg');
-    });
-  });
+    // htmlToImage library
+    // html2canvas(contents).then(canvas => {
+    //   saveImg(canvas.toDataURL('image/jpg'), 'image.jpg');
+    // });
 
+    domtoimage.toPng(contents).then((dataUrl) => {
+        saveImg(dataUrl, 'image.png');
+      })
+      .catch(function (error) {
+        console.error('error', error);
+      });
+  });
   /* function */
   function showExample(bool = true) {
     if (bool) {

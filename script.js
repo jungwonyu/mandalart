@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const contents = document.querySelector('.contents');
 
   saveBtn.addEventListener('click', () => {
-    // htmlToImage library
+    // html2canvas library
     // html2canvas(contents).then(canvas => {
     //   saveImg(canvas.toDataURL('image/jpg'), 'image.jpg');
     // });
